@@ -12,8 +12,11 @@ const logstash = new Logstash({
 
 pm2.Client.launchBus(function(err, bus) {
   if (err) {
-    return console.error(err);
+    return console.error('PM2 LogStash', err);
   }
+
+  console.log('PM2 Logstash Connector: Bus connected, sending logs to ' + conf.logstash_host + ':' + conf.logstash_port);
+  
   bus.on("log:out", function(log) {
     if (log.process.name === packageJSON.name) {
       return;
@@ -27,5 +30,25 @@ pm2.Client.launchBus(function(err, bus) {
     };
 
     logstash.send(message);
+  });
+  
+  bus.on("log:err", function(log) {
+    if (log.process.name === packageJSON.name) {
+      return;
+    }
+
+    const message = {
+      application: log.process.name,
+      log_level: "ERROR",
+      raw_message: log.data,
+      type: "pm2-logstash"
+    };
+
+    logstash.send(message);
+  });
+
+  bus.on('close', function() {
+    console.log('PM2 Logstash Connector: Bus closed');
+    pm2.disconnectBus();
   });
 });
