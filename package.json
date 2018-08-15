@@ -13,10 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/easynvest/pm2-logstash.git"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/keymetrics/pmx.git"
-  },
   "config": {
     "logstash_port": 9997,
     "logstash_host": "127.0.0.1",
