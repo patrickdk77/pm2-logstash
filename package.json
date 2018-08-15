@@ -8,6 +8,11 @@
     "pm2": "^3.0.3",
     "pmx": "latest"
   },
+  "homepage": "https://github.com/easynvest/pm2-logstash",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easynvest/pm2-logstash.git"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/keymetrics/pmx.git"
