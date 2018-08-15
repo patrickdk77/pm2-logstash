@@ -1,0 +1,29 @@
+{
+  "name": "pm2-logstash",
+  "version": "0.0.1",
+  "description": "PM2 Logstash Module",
+  "main": "app.js",
+  "dependencies": {
+    "logstash-client": "^1.1.1",
+    "pm2": "^3.0.3",
+    "pmx": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keymetrics/pmx.git"
+  },
+  "config": {
+    "logstash_port": 9997,
+    "logstash_host": "127.0.0.1",
+    "logstash_type": "udp"
+  },
+  "apps": [
+    {
+      "merge_logs": true,
+      "max_memory_restart": "200M",
+      "script": "app.js"
+    }
+  ],
+  "author": "Guilherme Mangabeira Gregio",
+  "license": "MIT"
+}
