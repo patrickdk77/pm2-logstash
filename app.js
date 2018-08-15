@@ -26,6 +26,6 @@ pm2.Client.launchBus(function(err, bus) {
       type: "pm2-logstash"
     };
 
-    sendMessage(message);
+    logstash.send(message);
   });
 });
