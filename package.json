@@ -1,6 +1,6 @@
 {
   "name": "@easynvest/pm2-logstash",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "PM2 Logstash Module",
   "main": "app.js",
   "dependencies": {
