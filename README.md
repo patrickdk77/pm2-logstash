@@ -12,7 +12,7 @@ An quick and dirty library to redirect your [PM2](http://pm2.io) logs to a [Logs
 Tested on node 8.11.3, requires pm2.
 
 ```sh
-  pm2 install pm2-logstash
+  pm2 install @easynvest/pm2-logstash
 ```
 
 ## Configuration
@@ -27,12 +27,12 @@ This module has multiple configuration variables, all fed into node-logstash-cli
 After having installed the module:
 
 ```sh
-  pm2 set pm2-logstash:<param> <value>
+  pm2 set @easynvest/pm2-logstash:<param> <value>
 ```
 
 Examples:
 
 ```sh
-  pm2 set pm2-logstash:logstash_host my.cool.host
-  pm2 set pm2-logstash:logstash_port 12345
+  pm2 set @easynvest/pm2-logstash:logstash_host my.cool.host
+  pm2 set @easynvest/pm2-logstash:logstash_port 12345
 ```

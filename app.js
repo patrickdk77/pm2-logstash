@@ -15,7 +15,7 @@ pm2.Client.launchBus(function(err, bus) {
     return console.error(err);
   }
   bus.on("log:out", function(log) {
-    if (log.process.name === "logstash") {
+    if (log.process.name === packageJSON.name) {
       return;
     }
 
