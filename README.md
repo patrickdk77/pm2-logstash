@@ -36,3 +36,8 @@ Examples:
   pm2 set @easynvest/pm2-logstash:logstash_host my.cool.host
   pm2 set @easynvest/pm2-logstash:logstash_port 12345
 ```
+
+## License
+
+MIT
+
