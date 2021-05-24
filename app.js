@@ -1,5 +1,6 @@
 const pm2 = require("pm2");
 const pmx = require("pmx");
+const os  = require("os");
 const Logstash = require("logstash-client");
 const packageJSON = require("./package");
 const conf = pmx.initModule();
@@ -7,7 +8,9 @@ const conf = pmx.initModule();
 const logstash = new Logstash({
   type: conf.logstash_type,
   host: conf.logstash_host,
-  port: conf.logstash_port
+  port: conf.logstash_port,
+  hostname: conf.logstash_hostname || os.hostname(),
+  stackname: config.logstash_stackname || process.env.STACK_FULL
 });
 
 pm2.Client.launchBus(function(err, bus) {
@@ -23,9 +26,13 @@ pm2.Client.launchBus(function(err, bus) {
     }
 
     const message = {
+      id: log.process.pm_id,
       application: log.process.name,
+      '@timestamp': new Date().toISOString(),
+      host: config.hostname,
+      received_from: config.stackname.
       log_level: "INFO",
-      raw_message: log.data,
+      message: log.data,
       type: "pm2-logstash"
     };
 
@@ -38,9 +45,13 @@ pm2.Client.launchBus(function(err, bus) {
     }
 
     const message = {
+      id: log.process.pm_id,
       application: log.process.name,
+      '@timestamp': new Date().toISOString(),
+      host: config.hostname,
+      received_from: config.stackname.
       log_level: "ERROR",
-      raw_message: log.data,
+      message: log.data,
       type: "pm2-logstash"
     };
 

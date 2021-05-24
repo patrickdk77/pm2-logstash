@@ -1,17 +1,17 @@
 {
-  "name": "@easynvest/pm2-logstash",
+  "name": "patrickdk77/pm2-logstash",
   "version": "0.1.1",
   "description": "PM2 Logstash Module",
   "main": "app.js",
   "dependencies": {
     "logstash-client": "^1.1.1",
-    "pm2": "^3.0.3",
+    "pm2": "latest",
     "pmx": "latest"
   },
-  "homepage": "https://github.com/easynvest/pm2-logstash",
+  "homepage": "https://github.com/patrickdk77/pm2-logstash",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/easynvest/pm2-logstash.git"
+    "url": "git+https://github.com/patrickdk77/pm2-logstash.git"
   },
   "config": {
     "logstash_port": 9997,
