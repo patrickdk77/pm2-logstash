@@ -1,5 +1,5 @@
 {
-  "name": "patrickdk77/pm2-logstash",
+  "name": "pm2-logstash",
   "version": "0.1.1",
   "description": "PM2 Logstash Module",
   "main": "app.js",
