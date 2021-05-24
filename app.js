@@ -14,6 +14,9 @@ const logstash = new Logstash({
 });
 
 pm2.Client.launchBus(function(err, bus) {
+  const hostname = os.hostname();
+  const stackname = process.env.STACK_NAME;
+  
   if (err) {
     return console.error('PM2 LogStash', err);
   }
@@ -29,8 +32,8 @@ pm2.Client.launchBus(function(err, bus) {
       id: log.process.pm_id,
       application: log.process.name,
       '@timestamp': new Date().toISOString(),
-      host: logstash.hostname,
-      received_from: logstash.stackname,
+      host: hostname,
+      received_from: stackname,
       log_level: "INFO",
       message: log.data,
       type: "pm2-logstash"
@@ -48,8 +51,8 @@ pm2.Client.launchBus(function(err, bus) {
       id: log.process.pm_id,
       application: log.process.name,
       '@timestamp': new Date().toISOString(),
-      host: logstash.hostname,
-      received_from: logstash.stackname,
+      host: hostname,
+      received_from: stackname,
       log_level: "ERROR",
       message: log.data,
       type: "pm2-logstash"
