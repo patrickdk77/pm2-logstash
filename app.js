@@ -32,9 +32,9 @@ pm2.Client.launchBus(function(err, bus) {
       id: log.process.pm_id,
       application: log.process.name,
       '@timestamp': new Date().toISOString(),
-      host: hostname,
+      hostname: hostname,
       received_from: stackname,
-      log_level: "INFO",
+      log_level: "info",
       message: log.data,
       type: "pm2-logstash"
     };
@@ -51,9 +51,9 @@ pm2.Client.launchBus(function(err, bus) {
       id: log.process.pm_id,
       application: log.process.name,
       '@timestamp': new Date().toISOString(),
-      host: hostname,
+      hostname: hostname,
       received_from: stackname,
-      log_level: "ERROR",
+      log_level: "error",
       message: log.data,
       type: "pm2-logstash"
     };
