@@ -10,7 +10,7 @@ const logstash = new Logstash({
   host: conf.logstash_host,
   port: conf.logstash_port,
   hostname: conf.logstash_hostname || os.hostname(),
-  stackname: config.logstash_stackname || process.env.STACK_FULL
+  stackname: conf.logstash_stackname || process.env.STACK_FULL
 });
 
 pm2.Client.launchBus(function(err, bus) {
@@ -29,8 +29,8 @@ pm2.Client.launchBus(function(err, bus) {
       id: log.process.pm_id,
       application: log.process.name,
       '@timestamp': new Date().toISOString(),
-      host: config.hostname,
-      received_from: config.stackname.
+      host: logstash.hostname,
+      received_from: logstash.stackname.
       log_level: "INFO",
       message: log.data,
       type: "pm2-logstash"
@@ -48,8 +48,8 @@ pm2.Client.launchBus(function(err, bus) {
       id: log.process.pm_id,
       application: log.process.name,
       '@timestamp': new Date().toISOString(),
-      host: config.hostname,
-      received_from: config.stackname.
+      host: logstash.hostname,
+      received_from: logstash.stackname.
       log_level: "ERROR",
       message: log.data,
       type: "pm2-logstash"
